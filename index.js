@@ -84,7 +84,7 @@ const questionsEngineer = [
     {
         type: 'input',
         name: 'id',
-        message: `Please enter your team member's employee id. (Required)`,
+        message: `Please enter ${data.name}'s employee id. (Required)`,
         validate: id => {
             if (id) {
                 return true
@@ -97,7 +97,7 @@ const questionsEngineer = [
     {
         type: 'input',
         name: 'email',
-        message: `Please enter your team member's email address. (Required)`,
+        message: `Please enter ${data.name}'s email address. (Required)`,
         validate: email => {
             if (email) {
                 return true
@@ -110,7 +110,7 @@ const questionsEngineer = [
     {
         type: 'input',
         name: 'github',
-        message: `Please enter your team member's GitHub username. (Required)`,
+        message: `Please enter ${data.name}'s GitHub username. (Required)`,
         validate: github => {
             if (github) {
                 return true
@@ -139,7 +139,7 @@ const questionsIntern = [
     {
         type: 'input',
         name: 'id',
-        message: `Please enter your team member's employee id. (Required)`,
+        message: `Please enter ${data.name}'s employee id. (Required)`,
         validate: id => {
             if (id) {
                 return true
@@ -152,7 +152,7 @@ const questionsIntern = [
     {
         type: 'input',
         name: 'email',
-        message: `Please enter your team member's email address. (Required)`,
+        message: `Please enter ${data.name}'s email address. (Required)`,
         validate: email => {
             if (email) {
                 return true
@@ -165,7 +165,7 @@ const questionsIntern = [
     {
         type: 'input',
         name: 'github',
-        message: `Please enter the school name your team member's is attending. (Required)`,
+        message: `Please enter the school name ${data.name} is attending. (Required)`,
         validate: github => {
             if (github) {
                 return true
@@ -205,7 +205,7 @@ Let's get started by building your profile. Then we can create profiles for each
             crtEmp();
         })
         .catch((err) => {
-            console.log(`The following error occurred while creating the manager profile`, err);
+            console.log(`The following error occurred while creating ${data.name}'s profile. Here's the error:`, err);
         })
 };
 
@@ -218,12 +218,12 @@ const crtEmp = () => {
                 (data.emps === 'Intern') {
                 crtIntern()
             } else {
-                console.log(`Your team profile is being generated. Look for it in the ./dist directory.`);
+                console.log(`Almost finished... Your team's profile is being generated. Look for it in the ./dist directory.`);
                 console.log(employeeArr);
             }
         })
         .catch((err) => {
-            console.log(`The following error occurred while starting a new team member profile`, err);
+            console.log(`The following error occurred while starting a new team member profile.`, err);
         })
 };
 
@@ -240,7 +240,7 @@ ____________________________________________
             crtEmp();
         })
         .catch((err) => {
-            console.log(`The following error occurred while creating the manager profile`, err);
+            console.log(`The following error occurred while creating ${data.name}'s profile. Here's the error:`, err);
         })
 };
 
@@ -257,7 +257,7 @@ ____________________________________________
             crtEmp();
         })
         .catch((err) => {
-            console.log(`The following error occurred while creating the manager profile`, err);
+            console.log(`The following error occurred while creating ${data.name}'s profile. Here's the error:`, err);
         })
 };
 
