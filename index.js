@@ -1,13 +1,12 @@
 // application dependencies
+const fs = require(`fs`); // write file resource (node resource)
 const inquirer = require(`inquirer`); // questions resource (npm i inquirer)
 const jest = require(`jest`); // testing resource (npm i jest)
-const fs = require(`fs`); // write file resource (node resource)
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
-// Class objects defined in the /lib directory
-const Employee = require(`.lib/Employee`);
-const Manager = require(`.lib/Manager`);
-const Engineer = require(`.lib/Engineer`);
-const Intern = require(`.lib/Intern`);
 
 
 const employeeArr = [];
@@ -84,7 +83,7 @@ const questionsEngineer = [
     {
         type: 'input',
         name: 'id',
-        message: `Please enter ${data.name}'s employee id. (Required)`,
+        message: `Please enter the engineer's employee id. (Required)`,
         validate: id => {
             if (id) {
                 return true
@@ -97,7 +96,7 @@ const questionsEngineer = [
     {
         type: 'input',
         name: 'email',
-        message: `Please enter ${data.name}'s email address. (Required)`,
+        message: `Please enter engineer's email address. (Required)`,
         validate: email => {
             if (email) {
                 return true
@@ -110,7 +109,7 @@ const questionsEngineer = [
     {
         type: 'input',
         name: 'github',
-        message: `Please enter ${data.name}'s GitHub username. (Required)`,
+        message: `Please enter the engineer's GitHub username. (Required)`,
         validate: github => {
             if (github) {
                 return true
@@ -139,7 +138,7 @@ const questionsIntern = [
     {
         type: 'input',
         name: 'id',
-        message: `Please enter ${data.name}'s employee id. (Required)`,
+        message: `Please enter intern's employee id. (Required)`,
         validate: id => {
             if (id) {
                 return true
@@ -152,7 +151,7 @@ const questionsIntern = [
     {
         type: 'input',
         name: 'email',
-        message: `Please enter ${data.name}'s email address. (Required)`,
+        message: `Please enter intern's email address. (Required)`,
         validate: email => {
             if (email) {
                 return true
@@ -164,10 +163,10 @@ const questionsIntern = [
     },
     {
         type: 'input',
-        name: 'github',
-        message: `Please enter the school name ${data.name} is attending. (Required)`,
-        validate: github => {
-            if (github) {
+        name: 'school',
+        message: `Please enter the name of the school the intern is attending. (Required)`,
+        validate: school => {
+            if (school) {
                 return true
             } else {
                 console.log(`Oops! You did not enter a school name. Please enter a school name.`);
@@ -197,20 +196,20 @@ Team Profile Generator is a simple solution that uses Javascript, Node JS, and I
 Let's get started by building your profile. Then we can create profiles for each of your team members.
 
 `);
-    inquirer.prompt(questionsManager)
+   return inquirer.prompt(questionsManager)
         .then((data) => {
-            const Manager = new Manager(data.name, data.id, data.email, data.officeNumber);
-            console.log(`Manager:`, Manager);
-            employeeArr.push(Manager);
+            const Managers = new Manager(data.name, data.id, data.email, data.officeNumber);
+            console.log(`Manager:`, Managers);
+            employeeArr.push(Managers);
             crtEmp();
         })
         .catch((err) => {
-            console.log(`The following error occurred while creating ${data.name}'s profile. Here's the error:`, err);
+            console.log(`The following error occurred while creating manager's profile. Here's the error:`, err);
         })
 };
 
 const crtEmp = () => {
-    inquirer.prompt(questionsAddEmp)
+    return inquirer.prompt(questionsAddEmp)
         .then((data) => {
             if (data.emps === 'Engineer') {
                 crtEngineer()
@@ -229,36 +228,38 @@ const crtEmp = () => {
 
 const crtEngineer = () => {
     console.log(`
+============================================    
 Let's start creating a new Engineer Profile!
-____________________________________________
+============================================
 `);
-    inquirer.prompt(questionsEngineer)
+    return inquirer.prompt(questionsEngineer)
         .then((data) => {
-            const Engineer = new Engineer(data.name, data.id, data.email, data.github);
-            console.log(`Engineer:`, Engineer);
-            employeeArr.push(Engineer);
+            const Engineers = new Engineer(data.name, data.id, data.email, data.github);
+            console.log(`Engineer:`, Engineers);
+            employeeArr.push(Engineers);
             crtEmp();
         })
         .catch((err) => {
-            console.log(`The following error occurred while creating ${data.name}'s profile. Here's the error:`, err);
+            console.log(`The following error occurred while creating engineer's profile. Here's the error:`, err);
         })
 };
 
-const crtEngineer = () => {
+const crtIntern = () => {
     console.log(`
+==========================================
 Let's start creating a new Intern Profile!
-____________________________________________
+==========================================
 `);
-    inquirer.prompt(questionsIntern)
+    return inquirer.prompt(questionsIntern)
         .then((data) => {
-            const Engineer = new Engineer(data.name, data.id, data.email, data.school);
-            console.log(`Engineer:`, Engineer);
-            employeeArr.push(Engineer);
+            const Interns = new Intern(data.name, data.id, data.email, data.school);
+            console.log(`Intern:`, Interns);
+            employeeArr.push(Interns);
             crtEmp();
         })
         .catch((err) => {
-            console.log(`The following error occurred while creating ${data.name}'s profile. Here's the error:`, err);
+            console.log(`The following error occurred while creating the intern profile. Here's the error:`, err);
         })
 };
 
-init();
+init()

@@ -3,18 +3,15 @@
   "version": "1.0.0",
   "description": "Team Profile Generator - A simple solution that uses Javascript, Node JS, and Inquirer to dynamically assemble an HTML5 page that  displays the team you define.",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bkfleet1/team-gen.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Brad Kelley",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/bkfleet1/team-gen/issues"
