@@ -3,11 +3,13 @@ const fs = require(`fs`); // write file resource (node resource)
 const inquirer = require(`inquirer`); // questions resource (npm i inquirer)
 const jest = require(`jest`); // testing resource (npm i jest)
 
+
 // classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+const generateTeam = require(`./src/generateTeam`);
 
 
 const employeeArr = [];
@@ -213,40 +215,22 @@ const crtEmp = () => {
     return inquirer.prompt(questionsAddEmp)
         .then((data) => {
             if (data.emps === 'Engineer') {
-                crtEngineer()
+                crtEngineer();
             } else if
                 (data.emps === 'Intern') {
-                crtIntern()
+                crtIntern();
             } else {
                 console.log(`Almost finished... Your team's profile is being generated. Look for it in the ./dist directory.`);
-                console.log(employeeArr)
-                fs.writeFileSync('./dist/portfolio.html', `<!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Company Team Board</title>
-                    <!-- CSS only -->
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-                </head>
-                <body>
-                    <header>Company Team Board</header>
-                    <section class="row">
-                    <section class="employee"></section>
-                    </section>
-                              
-                    
+                generateTeam(employeeArr)
+                .then(writeToFile)
                 
-                    
-                </body>
-                </html>`)
             }
         })
         .catch((err) => {
             console.log(`The following error occurred while starting a new team member profile.`, err);
         })
 };
+
 
 const crtEngineer = () => {
     console.log(`
@@ -283,5 +267,10 @@ Let's start creating a new Intern Profile!
             console.log(`The following error occurred while creating the intern profile. Here's the error:`, err);
         })
 };
+
+const writeToFile = (data) => {
+    fs.writeFileSync('./dist/portfolio.html', data)
+};
+
 
 init()
