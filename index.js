@@ -2,7 +2,8 @@
 const fs = require(`fs`); // write file resource (node resource)
 const inquirer = require(`inquirer`); // questions resource (npm i inquirer)
 const jest = require(`jest`); // testing resource (npm i jest)
-const Employee = require('./lib/Employee');
+
+// classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
