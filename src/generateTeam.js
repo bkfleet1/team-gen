@@ -89,7 +89,7 @@ function generateTeam(employeeArr) {
 
 
   const writeToFile = () => {
-    fs.writeFileSync('./dist/portfolio.html', (`<!DOCTYPE html>
+    fs.writeFileSync('./dist/team.html', (`<!DOCTYPE html>
     <html lang="en">
     
     <head>
