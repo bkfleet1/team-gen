@@ -7,8 +7,8 @@ A simple solution that uses Javascript, Node JS, and Inquirer to dynamically ass
 >> - Project Repository URL: https://github.com/bkfleet1/team-gen
 ![Team Profile Generator repository](./assets/images/repository.png)
 
->> - Walkthrough Video: https://watch.screencastify.com/v/I8bbA2RkSWVeQy6HqlK2
-![Walkthrough Video](https://watch.screencastify.com/v/I8bbA2RkSWVeQy6HqlK2)
+>> - Walkthrough Video: https://watch.screencastify.com/v/GbEjblAJgbtTLYtwQFI0
+![Walkthrough Video](https://watch.screencastify.com/v/GbEjblAJgbtTLYtwQFI0)
 
 ## Table of Contents
 > * [Title](#title)
