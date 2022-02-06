@@ -12,9 +12,9 @@ const Intern = require('./lib/Intern');
 
 
 const employeeArr = [];
-const mArr = {role: 'Manager'};
-const iArr = {role: 'Intern'};
-const eArr = {role: 'Engineer'};
+const mArr = { role: 'Manager' };
+const iArr = { role: 'Intern' };
+const eArr = { role: 'Engineer' };
 
 const questionsManager = [
     {
@@ -201,11 +201,10 @@ Team Profile Generator is a simple solution that uses Javascript, Node JS, and I
 Let's get started by building your profile. Then we can create profiles for each of your team members.
 
 `);
-   return inquirer.prompt(questionsManager)
+    return inquirer.prompt(questionsManager)
         .then((data) => {
-            console.log(data)
             const Managers = new Manager(data.name, data.id, data.email, data.officeNumber);
-            const Mgr = {...mArr,...Managers}
+            const Mgr = { ...mArr, ...Managers }
             employeeArr.push(Mgr);
             crtEmp();
         })
@@ -225,7 +224,7 @@ const crtEmp = () => {
             } else {
                 console.log(`Almost finished... Your team's profile is being generated. Look for it in the ./dist directory.`)
                 generateTeam(employeeArr)
-             
+
             }
         })
         .catch((err) => {
@@ -243,7 +242,7 @@ Let's start creating a new Engineer Profile!
     return inquirer.prompt(questionsEngineer)
         .then((data) => {
             const Engineers = new Engineer(data.name, data.id, data.email, data.github);
-            const Eng = {...eArr,...Engineers}
+            const Eng = { ...eArr, ...Engineers }
             employeeArr.push(Eng);
             crtEmp();
         })
@@ -261,7 +260,7 @@ Let's start creating a new Intern Profile!
     return inquirer.prompt(questionsIntern)
         .then((data) => {
             const Interns = new Intern(data.name, data.id, data.email, data.school);
-            const Int = {...iArr,...Interns}
+            const Int = { ...iArr, ...Interns }
             employeeArr.push(Int);
             crtEmp();
         })

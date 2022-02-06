@@ -2,14 +2,14 @@ const fs = require(`fs`); // write file resource (node resource)
 
 
 function generateTeam(employeeArr) {
-    const mParse = employeeArr.filter(function (el) { return el.role === 'Manager'; });
-    const eParse = employeeArr.filter(function (el) { return el.role === 'Engineer'; });
-    const iParse = employeeArr.filter(function (el) { return el.role === 'Intern'; });
+  const mParse = employeeArr.filter(function (el) { return el.role === 'Manager'; });
+  const eParse = employeeArr.filter(function (el) { return el.role === 'Engineer'; });
+  const iParse = employeeArr.filter(function (el) { return el.role === 'Intern'; });
 
-    
-  const empArr = [];  
 
-function mCards(mParse) {
+  const empArr = [];
+
+  function mCards(mParse) {
     const mArr = [];
     for (let m = 0; m < mParse.length; m++) {
       const mRole = mParse[m].role;
@@ -29,19 +29,19 @@ function mCards(mParse) {
       </div>
       </div>`
       mArr.push(mCard);
-  }
-  return mArr
-};
+    }
+    return mArr
+  };
 
-const eCards = (eParse) => {
+  const eCards = (eParse) => {
     const eArr = [];
     for (let e = 0; e < eParse.length; e++) {
-     const eRole = eParse[e].role;
-     const eName = eParse[e].name;
-     const eId = eParse[e].id;
-     const eEmail = eParse[e].email
-     const eGithub = eParse[e].github
-     const eCard = `<div class="cards">
+      const eRole = eParse[e].role;
+      const eName = eParse[e].name;
+      const eId = eParse[e].id;
+      const eEmail = eParse[e].email
+      const eGithub = eParse[e].github
+      const eCard = `<div class="cards">
     <div class='chead'>
         <p>${eName}</p>
         <p><i class="fas fa-glasses"></i> ${eRole}</p>
@@ -52,21 +52,21 @@ const eCards = (eParse) => {
         <div class="box">Github: <a href="https://github.com/${eGithub}" target="_blank">${eGithub}</a></div>
     </div>
     </div>`
-   eArr.push(eCard)
- }
- return eArr
-};
+      eArr.push(eCard)
+    }
+    return eArr
+  };
 
 
-const iCards = (iParse) => {
+  const iCards = (iParse) => {
     const iArr = [];
     for (let i = 0; i < iParse.length; i++) {
-     const iRole = iParse[i].role;
-     const iName = iParse[i].name;
-     const iId = iParse[i].id;
-     const iEmail = iParse[i].email;
-     const iSchool = iParse[i].school;
-     const iCard = `<div class="cards">
+      const iRole = iParse[i].role;
+      const iName = iParse[i].name;
+      const iId = iParse[i].id;
+      const iEmail = iParse[i].email;
+      const iSchool = iParse[i].school;
+      const iCard = `<div class="cards">
         <div class="chead">
             <div>${iName}</div>
             <div><i class="fas fa-user-graduate"></i> ${iRole}</div>
@@ -77,18 +77,18 @@ const iCards = (iParse) => {
             <div class="box">School: ${iSchool}</div>
         </div>
         </div>`
-        iArr.push(iCard)
+      iArr.push(iCard)
     }
     return iArr
   }
 
-const mArray = mCards(mParse)
-const eArray = eCards(eParse)
-const iArray = iCards(iParse)
-const allArr =[...mArray,...eArray,...iArray]
+  const mArray = mCards(mParse)
+  const eArray = eCards(eParse)
+  const iArray = iCards(iParse)
+  const allArr = [...mArray, ...eArray, ...iArray]
 
 
-const writeToFile = () => {
+  const writeToFile = () => {
     fs.writeFileSync('./dist/portfolio.html', (`<!DOCTYPE html>
     <html lang="en">
     
@@ -115,12 +115,12 @@ const writeToFile = () => {
 </body>
 
 </html> `))
-}
+  }
 
 
 
-const writeCSS = () => {
-    fs.writeFileSync('./dist/style.css',(`* {
+  const writeCSS = () => {
+    fs.writeFileSync('./dist/style.css', (`* {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -198,10 +198,10 @@ const writeCSS = () => {
       border-radius: 8px;
     }
     `))
-}; 
+  };
 
- writeToFile();
- writeCSS();
+  writeToFile();
+  writeCSS();
 
 };
 
