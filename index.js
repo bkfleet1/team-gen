@@ -2,17 +2,19 @@
 const fs = require(`fs`); // write file resource (node resource)
 const inquirer = require(`inquirer`); // questions resource (npm i inquirer)
 const jest = require(`jest`); // testing resource (npm i jest)
-
+const generateTeam = require('./src/generateTeam');
 
 // classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const generateTeam = require(`./src/generateTeam`);
 
 
 const employeeArr = [];
+const mArr = {role: 'Manager'};
+const iArr = {role: 'Intern'};
+const eArr = {role: 'Engineer'};
 
 const questionsManager = [
     {
@@ -201,9 +203,10 @@ Let's get started by building your profile. Then we can create profiles for each
 `);
    return inquirer.prompt(questionsManager)
         .then((data) => {
+            console.log(data)
             const Managers = new Manager(data.name, data.id, data.email, data.officeNumber);
-            console.log(`Manager:`, Managers);
-            employeeArr.push(Managers);
+            const Mgr = {...mArr,...Managers}
+            employeeArr.push(Mgr);
             crtEmp();
         })
         .catch((err) => {
@@ -220,10 +223,9 @@ const crtEmp = () => {
                 (data.emps === 'Intern') {
                 crtIntern();
             } else {
-                console.log(`Almost finished... Your team's profile is being generated. Look for it in the ./dist directory.`);
+                console.log(`Almost finished... Your team's profile is being generated. Look for it in the ./dist directory.`)
                 generateTeam(employeeArr)
-                .then(writeToFile)
-                
+             
             }
         })
         .catch((err) => {
@@ -241,8 +243,8 @@ Let's start creating a new Engineer Profile!
     return inquirer.prompt(questionsEngineer)
         .then((data) => {
             const Engineers = new Engineer(data.name, data.id, data.email, data.github);
-            console.log(`Engineer:`, Engineers);
-            employeeArr.push(Engineers);
+            const Eng = {...eArr,...Engineers}
+            employeeArr.push(Eng);
             crtEmp();
         })
         .catch((err) => {
@@ -259,8 +261,8 @@ Let's start creating a new Intern Profile!
     return inquirer.prompt(questionsIntern)
         .then((data) => {
             const Interns = new Intern(data.name, data.id, data.email, data.school);
-            console.log(`Intern:`, Interns);
-            employeeArr.push(Interns);
+            const Int = {...iArr,...Interns}
+            employeeArr.push(Int);
             crtEmp();
         })
         .catch((err) => {
@@ -268,9 +270,6 @@ Let's start creating a new Intern Profile!
         })
 };
 
-const writeToFile = (data) => {
-    fs.writeFileSync('./dist/portfolio.html', data)
-};
 
 
 init()
