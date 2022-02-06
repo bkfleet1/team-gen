@@ -1,0 +1,78 @@
+* {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+    
+      /* root variable */
+    :root {
+      --primary-color: #ffffff;
+      --secondary-color: #000000;
+      --tertiary-color: #aaaaaa;
+      --quatinary-color: rgba(223,218,218,0.7539390756302521);
+      --font-family-one: Arial, sans-serif;
+      --background-one: radial-gradient(circle, rgba(255,255,255,0) 15%, rgba(223,218,218,.75) 40%,rgba(223,218,218,1) 100%);
+      --background-two: radial-gradient(circle, rgba(255,255,255,1) 10%, rgba(223,218,218,1) 90%);
+      --background-blue: rgb(17, 94, 196);
+      --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    
+    body {
+        color: var(--primary-color);
+      }
+    
+    .row {
+      background-color: red;
+      border-radius: 8px;
+      box-shadow: var(--box-shadow);
+      color: var(--primary-color);
+      font-family: var(--font-family-one);
+      font-size: 2vw;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      margin: 10px;
+    }
+    
+    .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around; 
+    }
+    
+    .cards {
+        margin: 10px;
+        border-radius: 8px;
+        box-shadow: var(--box-shadow);
+        padding: 10px;
+        background: var(--background-two);
+        color: var(--secondary-color);
+        font-family: var(--font-family-one);
+        width: 30%;
+    }
+  
+    .cbody {
+      font-size: 1.3vw;
+      color: var(--secondary-color);
+      margin: 10px;
+      padding: 10px;
+    }
+    
+    .chead {
+      font-size: 1.3vw;
+      color: var(--primary-color);
+      background-color: var(--background-blue);
+      margin: 10px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    
+    .box {
+      border: 1px solid var(--secondary-color);
+      background-color: var(--primary-color);
+      box-shadow: var(--box-shadow);
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+    }
+    
